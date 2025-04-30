@@ -19,4 +19,15 @@ app.post("/addproduct",upload.single('productImage'), async (req, res) => {
     }
 });
 
+app.get('/all_products', async (req, res) => {
+    try {
+        const product = await Product.find();
+        return res.status(200).json({message: "Products fetched successfully",data: product});
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Error fetching products" });
+    }
+});
+
+
 app.listen(5000,()=>console.log('server running on localhost 5000'))
