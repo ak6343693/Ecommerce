@@ -1,9 +1,12 @@
 const express = require('express');
+const cors = require("cors");
+
 const connectDb = require('./database')
 const Product = require('./modals/product')
 const Customer = require('./modals/customer')
 const upload = require('./config/multer')
 const app = express()
+app.use(cors());
 connectDb()
 app.use(express.json())
 
